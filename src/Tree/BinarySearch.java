@@ -142,9 +142,30 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
         preErgodic(node.left, queue);
         preErgodic(node.right, queue);
         queue.add((Key)node.key);
-
     }
 
+    //层序便利 广度优先遍历
+
+    public Queue<Key> layerErgodic(){
+        Queue<Key> result = new LinkedList<Key>();
+        LinkedList<Node> queue = new LinkedList<Node>();
+
+        queue.add(root);
+        while(queue.size()!= 0){
+
+          Node node = queue.removeFirst();
+
+          result.add((Key)node.key);
+          if(node.left != null){
+              queue.add(node.left);
+          }
+          if(node.right != null){
+              queue.add(node.right);
+          }
+
+        }
+        return result;
+    }
 
 
 
@@ -183,7 +204,7 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
         tree.put("d","4");
         tree.put("f","6");
 
-       Queue<String> keys = tree.preErgodic();
+       Queue<String> keys = tree.layerErgodic();
        for(String key:keys){
            String value = tree.get(key);
            System.out.println(key+" ");
