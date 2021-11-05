@@ -168,6 +168,26 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
     }
 
 
+    //寻找树的最高层数
+    public int findDepth(){
+        return findDepth(root);
+    }
+    public int findDepth(Node node){
+        if(node == null){
+            return 0;
+        }
+        int max = 0;
+        int maxL = 0;
+        int maxR = 0;
+        if(node.left != null){
+            maxL = findDepth(node.left);
+        }
+        if(node.right != null){
+            maxR = findDepth(node.right);
+        }
+        max = maxL > maxR?maxL+1:maxR+1;
+        return max;
+    }
 
     public static void main(String[] args) {
 //       BinarySearch<Integer, String> binarytree = new BinarySearch<>();
@@ -197,19 +217,19 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
 
         BinarySearch<String, String> tree = new BinarySearch<>();
 
-        tree.put("e","5");
-        tree.put("b","2");
-        tree.put("a","1");
-        tree.put("c","3");
-        tree.put("d","4");
-        tree.put("f","6");
+        tree.put("1","5");
+        tree.put("2","2");
+        tree.put("3","1");
+        tree.put("4","3");
+        tree.put("5","4");
+        tree.put("6","6");
 
        Queue<String> keys = tree.layerErgodic();
        for(String key:keys){
            String value = tree.get(key);
            System.out.println(key+" ");
        }
-
+        System.out.println(tree.findDepth());
     }
 
 }
