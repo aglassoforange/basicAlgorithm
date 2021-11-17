@@ -3,16 +3,20 @@ package UnionFound;
 import java.util.Scanner;
 
 //在UF 的基础上 简化了插入的时间复杂度
+//在这个基础上 在插入时候 判断 节点长度 然后进行 将小树插在大树上
 public class UF_weighted {
 
     int count; //每个集的数量
     int[] ele; //元素-其父节点元素
+    int[] size;
 
     public UF_weighted(int N){
         count = N;
         ele = new int[N];
+        size = new int[N];
 
         for(int a = 0; a<N; a++){
+            size[a] = 1;
             ele[a] = a;
         }
 
@@ -52,8 +56,15 @@ public class UF_weighted {
         if(groupb == groupa){
             return;
         }
-        ele[a] = b;
-
+        //如果a为大树 b将合并于a
+        if(size[a] >= size[b]){
+            ele[b] = a;
+            size[a]+=size[b];
+        }else{
+            ele[a] = b;
+            size[b]+=size[a];
+        }
+        count --;
     }
 
     public static void main(String[] args) {
