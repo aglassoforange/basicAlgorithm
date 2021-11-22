@@ -1,16 +1,16 @@
+package Graph;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 public class Graph {
 
     //定点数量
-    int pointNum;
+    public int pointNum;
     //边的数量
-    int edgeNum;
+    public int edgeNum;
     //临接表
-    ArrayList<ArrayList<Integer>> adj;
+    public ArrayList<ArrayList<Integer>> adj;
 
     public Graph(int a){
 
