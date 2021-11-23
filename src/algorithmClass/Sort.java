@@ -84,6 +84,66 @@ public class Sort {
             a[k] = temp[k];
         }
     }
+    //先找一个基准值，首尾各一个各一个指针
+    //左指针找比基准值大的， 而右指针找比基准值小的
+    //交换左指针 右指针元素
+    //重复以上操作知道左指针大于右指针
+    public static void QuickSort( Comparable[] a){
+            int lo = 0;
+            int hi = a.length - 1;
+
+            QuickSort(a, lo, hi);
+
+    }
+
+    public static void QuickSort(Comparable[] a, int lo, int hi){
+
+        if(hi <= lo){
+            return;
+        }
+
+        int mid = partition(a, lo, hi);
+        QuickSort(a, lo, mid - 1);
+        QuickSort(a, mid + 1, hi);
+
+    }
+
+    public static int partition(Comparable[] a, int lo, int hi){
+
+        Comparable key = a[lo];
+
+        int left = lo;
+        int right = hi+1;
+        //一直运行直到 两个指针在中间相遇
+        while(true){
+            //从左往右遍历 找到第一个左指针上比key 大的
+            while(greater(key, a[++left])){
+                if(left == hi){
+                    break;
+                }
+            }
+            //从右往左 找到第一个右指针上的比key 小的
+            while(greater(a[--right],key)){
+                if(right == lo){
+                    break;
+                }
+            }
+            //当左指针和右指针相遇了 就将key 和其互换
+            if(right <= left){
+
+               break;
+            }else{
+                exch(a, right, left);
+            }
+            //当两个指针没有相遇 互换left 和 right 并继续
+
+        }
+        exch(a,lo,right);
+        return right;
+
+    }
+
+
 
     public static boolean greater(Comparable c1, Comparable c2){
         return c1.compareTo(c2) > 0;
@@ -97,11 +157,9 @@ public class Sort {
 
     public static void main(String[] args) {
        long start =  System.currentTimeMillis();
-        Integer[] a = {1,1,4,3,5,2,8,5};
-        mergeSort(a);
-        long end = System.currentTimeMillis();
+        Integer[] a = {6,1,2,7,9,3,4,5,8};
+        QuickSort(a);
 
         System.out.println(Arrays.toString(a));
-        System.out.println(end-start);
     }
 }
