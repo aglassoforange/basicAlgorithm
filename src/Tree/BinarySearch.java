@@ -75,13 +75,17 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
                 N--;
                 return x.right;
             }
-
+            //取要删的端点的右端点的最左断点
+            //将其放置在删除位置
+            //左为原左边
+            //右为原右边
             Node minNode = x.right;
             while(minNode.left != null){
                 minNode = minNode.left;
             }
 
             Node n = x.right;
+            //将原来的最小node 给删除
             while(n.left !=null){
                 if(n.left.left == null){
                     n.left = null;
@@ -89,6 +93,7 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
                     n=n.left;
                 }
             }
+
             minNode.left = x.left;
             if(minNode.equals(x.right) != true){
                 minNode.right = x.right;
