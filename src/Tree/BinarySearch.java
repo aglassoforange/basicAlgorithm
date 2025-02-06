@@ -236,5 +236,30 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
        }
         System.out.println(tree.findDepth());
     }
+    public static void main(String[] args) {
+        BinarySearch<Integer, String> binarytree = new BinarySearch<>();
+
+        binarytree.put(5,"a");
+        binarytree.put(2,"b");
+        binarytree.put(3,"c");
+        binarytree.put(4,"d");
+        System.out.println(binarytree.size());
+        System.out.println(binarytree.get(2));
+        binarytree.delete(2);
+        System.out.println(binarytree.size());
+        System.out.println(binarytree.get(2));
+
+        binarytree.put1(2,"b1");
+        binarytree.put1(3,"c1");
+        binarytree.put1(4,"d1");
+        binarytree.put1(1,"a1");
+        System.out.println(binarytree.size());
+        System.out.println(binarytree.get1(2));
+        binarytree.delete1(2);
+        System.out.println(binarytree.size());
+        System.out.println(binarytree.get1(2));
+
+        System.out.println(binarytree.findMin());
+    }
 
 }

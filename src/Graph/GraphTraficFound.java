@@ -34,5 +34,13 @@ public class GraphTraficFound {
         graph.dfs(graph.adj, 9, marked);
         System.out.println(marked[10]);
     }
+    public static void main(String[] args) {
+        Graph g = new Graph(10);
 
+        g.addEdge(0,1);
+        g.addEdge(1,2);
+        g.adj(1);
+        g.dfs();
+        g.bfs();
+    }
 }
