@@ -34,5 +34,22 @@ public class Node <Key extends Comparable<Key>, Value>{
         }
     }
 
+    public Value get(Key key){
+        if (key.compareTo(this.key) < 0){
+            if (this.left == null){
+                return null;
+            } else {
+                return this.left.get(key);
+            }
+        } else if (key.compareTo(this.key) > 0){
+            if (this.right == null){
+                return null;
+            } else {
+                return this.right.get(key);
+            }
+        } else {
+            return this.value;
+        }
+    }
 
 }
