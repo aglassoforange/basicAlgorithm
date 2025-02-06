@@ -34,5 +34,17 @@ public class Node <Key extends Comparable<Key>, Value>{
         }
     }
 
+    public differentCode(){
+        if (this.color == true){
+            if (this.left.color == true){
+                if (this.right.color == true){
+                    this.color = false;
+                    this.left.color = false;
+                    this.right.color = false;
+                }
+            }
+        }
+    }
+
 
 }
