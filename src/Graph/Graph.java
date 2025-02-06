@@ -95,6 +95,17 @@ public class Graph {
 
     }
 
+    public void addEdge(int a, int b, int c){
+        ArrayList<Integer> l1 = adj.get(a);
+        l1.add(b);
+        l1.add(c);
+
+        ArrayList<Integer> l2 = adj.get(b);
+        l2.add(a);
+        l2.add(c);
+
+        edgeNum++;
+    }
 
 
 
