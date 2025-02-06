@@ -133,11 +133,13 @@ public class BinarySearch <Key extends Comparable<Key>, Value > {
         }
     }
     //前中后序遍历
-    public Queue<Key> preErgodic(){
+  
+    public Queue<Key> midErgodic(){
         Queue<Key> queue = new LinkedList<>();
-        preErgodic(root, queue);
+        midErgodic(root, queue);
         return queue;
     }
+
 
     public void preErgodic(Node node, Queue<Key> queue){
 
